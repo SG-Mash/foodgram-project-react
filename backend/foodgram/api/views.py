@@ -85,19 +85,21 @@ class RecipeViewSet(viewsets.ModelViewSet):
             return RecipeGetSerializer
         return RecipeCreateSerializer
 
+    def addition(self, request, pk, model, modelserializer):
+        recipe = get_object_or_404(Recipe, id=pk)
+        if request.method == 'POST':
+            return create_model_instance(request, recipe, modelserializer)
+        if request.method == 'DELETE':
+            error_message = 'Проверьте рецепт в избранном или списке покупок'
+            return delete_model_instance(request, model, recipe, error_message)
+
     @action(
         detail=True,
         methods=['post', 'delete'],
         permission_classes=[IsAuthenticated, ]
     )
     def favorite(self, request, pk):
-        recipe = get_object_or_404(Recipe, id=pk)
-        if request.method == 'POST':
-            return create_model_instance(request, recipe, FavoriteSerializer)
-
-        if request.method == 'DELETE':
-            error_message = 'У вас нет этого рецепта в избранном'
-            return delete_model_instance(request, Favorite, recipe, error_message)
+        return self.addition(request, pk, Favorite, FavoriteSerializer)
 
     @action(
         detail=True,
@@ -105,14 +107,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         permission_classes=[IsAuthenticated, ]
     )
     def shopping_cart(self, request, pk):
-        recipe = get_object_or_404(Recipe, id=pk)
-        if request.method == 'POST':
-            return create_model_instance(request, recipe,
-                                         ShoppingCartSerializer)
-
-        if request.method == 'DELETE':
-            error_message = 'У вас нет этого рецепта в списке покупок'
-            return delete_model_instance(request, ShoppingCart, recipe, error_message)
+        return self.addition(request, pk, ShoppingCart, ShoppingCartSerializer)
 
     @action(
         detail=False,
