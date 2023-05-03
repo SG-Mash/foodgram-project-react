@@ -28,10 +28,9 @@ class Command(BaseCommand):
                       encoding='utf-8') as f:
                 data = csv.reader(f)
                 for row in data:
-                    name, measurement_unit = row
                     Ingredient.objects.create(
-                        name=name,
-                        measurement_unit=measurement_unit
+                        name=row[0],
+                        measurement_unit=row[1]
                     )
                 print('Load ingredients.csv have successfully finished')
         except FileNotFoundError:
