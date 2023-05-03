@@ -28,7 +28,7 @@ class Command(BaseCommand):
                       encoding='utf-8') as f:
                 data = csv.reader(f)
                 for row in data:
-                    Tag.objects.create(
+                    Tag.objects.get_or_create(
                         name=row[0],
                         color=row[1],
                         slug=row[2]
