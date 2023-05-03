@@ -80,7 +80,10 @@ class Recipe(models.Model):
     cooking_time = models.PositiveSmallIntegerField(
         'Время приготовления',
         validators=[
-            MinValueValidator(1, 'Время приготовления не может быть меньше 1 минуты')
+            MinValueValidator(
+                1,
+                'Время приготовления не может быть меньше 1 минуты'
+            )
         ]
     )
 
@@ -109,7 +112,10 @@ class RecipeIngredient(models.Model):
     amount = models.ImageField(
         'Количество',
         validators=[
-            MinValueValidator(1, 'Количество ингредиентов не может быть меньше 1')
+            MinValueValidator(
+                1,
+                'Количество ингредиентов не может быть меньше 1'
+            )
         ]
     )
 
@@ -173,4 +179,5 @@ class ShoppingCart(models.Model):
         verbose_name_plural = 'Списки покупок'
 
     def __str__(self):
-        return f'{self.user.username} добавил {self.recipe.name} в список покупок'
+        return (f'{self.user.username} добавил '
+                f'{self.recipe.name} в список покупок')
