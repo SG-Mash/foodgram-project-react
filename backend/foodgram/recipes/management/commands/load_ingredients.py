@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 data = csv.reader(f)
                 for row in data:
                     name, measurement_unit = row
-                    Ingredient.objects.get_or_create(
+                    Ingredient.objects.create(
                         name=name,
                         measurement_unit=measurement_unit
                     )
