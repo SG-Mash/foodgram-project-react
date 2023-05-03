@@ -1,4 +1,4 @@
-![workflow](https://github.com/sg-mash/foodgram-project-react/actions/workflows/yamdb_workflow.yml/badge.svg)
+![workflow](https://github.com/sg-mash/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
 
 ### Описание
 Проект "Foodgram" – это "продуктовый помощник". На этом сервисе авторизированные пользователи могут публиковать рецепты, 
