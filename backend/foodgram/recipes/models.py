@@ -109,7 +109,7 @@ class RecipeIngredient(models.Model):
         related_name='recipe_ingredients',
         verbose_name='Ингредиент'
     )
-    amount = models.ImageField(
+    amount = models.IntegerField(
         'Количество',
         validators=[
             MinValueValidator(
