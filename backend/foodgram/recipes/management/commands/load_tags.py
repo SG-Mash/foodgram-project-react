@@ -26,8 +26,8 @@ class Command(BaseCommand):
         try:
             with open(os.path.join(DATA_ROOT, options['filename']), 'r',
                       encoding='utf-8') as f:
-                datareader = csv.reader(f)
-                for row in datareader:
+                data = csv.reader(f)
+                for row in data:
                     Tag.objects.create(
                         name=row[0],
                         color=row[1],

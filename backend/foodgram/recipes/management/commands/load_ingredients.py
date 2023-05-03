@@ -32,6 +32,8 @@ class Command(BaseCommand):
                         name=row[0],
                         measurement_unit=row[1]
                     )
+                    print(row[0])
+                    print(row[1])
                 print('Load ingredients.csv have successfully finished')
         except FileNotFoundError:
             raise CommandError('Добавьте файл ingredients в директорию data')
