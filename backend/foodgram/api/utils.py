@@ -45,7 +45,10 @@ def create_model_instance(request, instance, serializer_name):
 
 
 def delete_model_instance(request, model_name, instance, error_message):
-    if not model_name.objects.filter(user=request.user, recipe=instance).exists():
+    if not model_name.objects.filter(
+            user=request.user,
+            recipe=instance
+    ).exists():
         return Response(
             {'errors': error_message},
             status=status.HTTP_400_BAD_REQUEST

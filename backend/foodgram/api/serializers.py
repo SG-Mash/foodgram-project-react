@@ -126,7 +126,8 @@ class IngredientGetSerializer(serializers.ModelSerializer):
 
 
 class IngredientPostSerializer(serializers.ModelSerializer):
-    """Сериализатор для добавления ингредиентов. Используется при работе с рецептами."""
+    """Сериализатор для добавления ингредиентов.
+    Используется при работе с рецептами."""
     id = serializers.IntegerField()
     amount = serializers.IntegerField()
 
