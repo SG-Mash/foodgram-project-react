@@ -20,7 +20,7 @@ class User(AbstractUser):
         blank=False,
         null=False,
         max_length=150,
-        validators=[validate_username],
+        validators=(validate_username, ),
     )
     first_name = models.CharField(
         'Имя',
@@ -42,7 +42,7 @@ class User(AbstractUser):
     )
 
     class Meta:
-        ordering = ['id']
+        ordering = ('id', )
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
 
@@ -68,7 +68,7 @@ class Follow(models.Model):
     class Meta:
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
-        ordering = ['user']
+        ordering = ('user',)
         constraints = [
             models.UniqueConstraint(
                 fields=['user', 'author'],
