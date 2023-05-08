@@ -33,7 +33,7 @@ class RecipeFilter(FilterSet):
         return queryset
 
 
-class IngredientSearchFilter(SearchFilter):
+class IngredientFilter(SearchFilter):
     search_param = 'name'
 
 # class IngredientFilter(FilterSet):
