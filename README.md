@@ -16,12 +16,6 @@
   - Nginx
   - Яндекс.Облако(Ubuntu 20.04 LTS)
 
-## Проект доступен по адресу: http://158.160.29.126
-Суперпользователь:
-логин - suser
-email - suser@yandex.ru
-пароль - RtuAsd134
-
 ### Как запустить проект на боевом сервере:
 
 Установить на сервере docker и docker-compose. Скопировать на сервер файлы docker-compose.yaml и nginx.conf:
